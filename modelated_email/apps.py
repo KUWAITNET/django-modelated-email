@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class TemplateModelEmailConfig(AppConfig):
-    name = 'tpl_model_email'
+    name = 'modelated_email'
