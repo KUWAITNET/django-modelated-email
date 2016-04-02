@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 from django.template import Context, Engine
 from django.template.loader import render_to_string
 
-import app_settings
+from . import settings as app_settings
 from .models import EmailTemplate
 
 
@@ -23,7 +23,7 @@ class TemplateEmailMessage(EmailMessage):
 
         email_template = EmailTemplate.objects.get(code=code)
 
-        translated_field = '_' + language if app_settings.EMAIL_TPL_TRANSLATE else ''
+        translated_field = '_' + language if app_settings.MODELATED_TRANSLATE else ''
         subject = getattr(email_template, 'subject{}'.format(translated_field))
         body = getattr(email_template, 'body{}'.format(translated_field))
 
@@ -45,7 +45,7 @@ def send_mail(code, to, context=None, language='en', attach_file=None):
     :return: 0 or 1
     """
     msg = TemplateEmailMessage(code, context, language=language)
-    msg.body = render_to_string('tpl_model_email/base.html',
+    msg.body = render_to_string('modelated_email/base.html',
                                 {'content': msg.body,
                                  'language': language})
 

@@ -11,8 +11,7 @@ admin_class = 'modeltranslation.admin.TabbedDjangoJqueryTranslationAdmin' \
 
 MODELATED_BODY_FIELD = getattr(settings, "MODELATED_BODY_FIELD", body_field)
 MODELATED_TRANSLATE = getattr(settings, "MODELATED_TRANSLATE", translate)
-MODELATED_ADMIN_CLASS = getattr(settings, "EMAIL_TPL_ADMIN_CLASS", admin_class)
-
+MODELATED_ADMIN_CLASS = getattr(settings, "MODELATED_ADMIN_CLASS", admin_class)
 
 BodyField = import_string(MODELATED_BODY_FIELD)
 AdminClass = import_string(MODELATED_ADMIN_CLASS)
